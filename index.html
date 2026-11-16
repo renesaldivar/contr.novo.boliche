@@ -301,7 +301,7 @@ textarea{resize:vertical;min-height:80px;}
           <p>1. O cancelamento da festa/confraternização não implicará em devolução do montante pago na reserva do evento.</p>
           <p style="margin-top:.5rem;">2. O consumo parcial dos produtos contratados não acarretará em desconto ao final do evento.</p>
           <p style="margin-top:.5rem;">3. É proibida a entrada de qualquer alimento ou bebida sem autorização da diretoria.</p>
-          <p style="margin-top:.5rem;">4. Tolerância de atraso de 20 minutos.</p>
+          <p style="margin-top:.5rem;">4. Tolerância de atraso de 10 minutos.</p>
           <p style="margin-top:.5rem;">5. O espaço camarote é exclusivo para quem reservou o mesmo.</p>
           <p style="margin-top:1rem;font-weight:600;color:var(--text);">Para a Reserva:</p>
           <p style="margin-top:.25rem;">É necessário um Pix de
@@ -335,7 +335,10 @@ const BOWLING=[
   {name:'Pistas – Segunda-feira',price:89,discountable:true,isLane:true},
   {name:'Pistas – Terça a Quinta',price:109,discountable:true,isLane:true},
   {name:'Pistas – Sexta-feira',price:149,discountable:true,isLane:true},
-  {name:'Pistas – Sábado e Domingo',price:149,discountable:true,isLane:true},
+  {name:'Pistas – Sábado das 15:00h às 18:00h',price:149,discountable:true,isLane:true},
+  {name:'Pistas – Sábado das 18:00h às 02:00h',price:189,discountable:true,isLane:true},
+  {name:'Pistas – Domingo das 15:00h às 18:00h',price:149,discountable:true,isLane:true},
+  {name:'Pistas – Domingo das 18:00h às 24:00h',price:180,discountable:true,isLane:true},
   {name:'Pistas – Feriado / Véspera',price:149,discountable:true,isLane:true},
   {name:'Camarote',price:150},
   {name:'Pacote 50 Fichas',price:100},
@@ -344,14 +347,9 @@ const BOWLING=[
   {name:'Desconto por Pista',price:4,isDiscount:true},
 ];
 const BEBIDAS=[
-  
-  {name:'Refrigerante 350ml',price:8},{name:'Água copo 200ml',price:2.5},
+  {name:'Refrigerante',price:8},{name:'Água copo 200ml',price:2.5},
   {name:'Refrigerante copo 200ml',price:3.5},{name:'Suco copo 200ml',price:5},
   {name:'Água garrafa 500ml',price:5},{name:'Suco Natural',price:10},
-  {name:'Água garrafa com gás 500ml',price:5},{name:'Suco Natural',price:10},
-  {name:'Água tônica  350ml',price:5},{name:'Água de Coco',price:10},
-  {name:'H2o 500ml',price:5},{name:'Schweppes 350ml',price:10},
-  {name:'H2o 500ml',price:5},{name:'Schweppes 350ml',price:10},    
   {name:'Suco com Leite',price:12},{name:'Chopp Claro Tulipa 280ml',price:2},
   {name:'Torre de Chopp 1L',price:45},{name:'Torre de Chopp 2,5L',price:90},
   {name:'Torre de Chopp 3,5L',price:123},{name:'Heineken Long Neck 330ml',price:14},
@@ -359,21 +357,6 @@ const BEBIDAS=[
   {name:'Stella Long Neck 330ml',price:13},{name:'Skol em Lata 350ml',price:9},
   {name:'Skol Beats',price:13},{name:'Smirnoff Ice',price:14},
   {name:'Cerveja Sem Álcool',price:13},
-  {name:'Batida de sorvete de coco, morango, abacaxi e maracuja ',price:13},{name:'Batida fruta com Champagne',price:14},
-  {name:'Batida sem alcool de Coco, morango, Abacaxi e maracujá',price:13},{name:'Smirnoff Ice',price:14},
-  {name:'Caipirinha Absolut',price:13},{name:'Caipirinha Smirnoff',price:14},
-  {name:'Caipirinha Saque',price:13},{name:'Caipirinha Pinga 51 ou velho B Kiwi, morango, limão ou maracujá.',price:14},
-  {name:'Campari',price:13},{name:'Cuba Livre',price:14},{name:'Red Bull',price:13},{name:'Tequila',price:14},
-  {name:'Licor 43',price:13},{name:'Amarula',price:14},{name:'Cachaça Seleta',price:13},{name:'Gin Tanqueray',price:14},
-  {name:'Red Label',price:13},{name:'Jack Daniel’s',price:14},{name:'Black Label',price:13},{name:'Passport',price:14},
-  {name:'Chivas Regal',price:13},{name:'San Martin 750 ml',price:14},
-  {name:'Taça de vinho de 250 ml',price:13},{name:'Copo gelo e red bull e Chivas Regal',price:14},
-  {name:'Copo gelo e red bull e Black Label',price:13},{name:'Copo gelo e red bull e Jack Daniel’s',price:14},
-  {name:'Copo gelo e red bull e Red Label',price:13},{name:'Copo gelo e red bull e White Horse',price:14},
-  {name:'Copo gelo e red bull e Passport',price:13},{name:'Taça de Gin Tanqueray, Red Bull',price:14},
-  {name:'Combo Jack Daniel’s+4 Red bull+4 gelos de coco',price:13},{name:'Combo de Gin Tanqueray+ 5 red bull + frutas',price:14},
-  {name:'Combo de Black Label+4 red bull+4 gelos de coco',price:13},{name:'Combo de Smirnoff 600ml+3 red bull+3 gelos de coco',price:14},
-  {name:'Combo de Red Label+4 red bull+4 gelos de coco',price:13},
 ];
 const PETISCOS=[
   {name:'Centena de Salgados',price:110},{name:'Pizzas Aperitivo',price:79.99},
@@ -386,7 +369,7 @@ const PETISCOS=[
   {name:'Bolinho de Queijo',price:39},{name:'Risole',price:39},
   {name:'Bolinho de Carne',price:39},{name:'Porção de Salgados Mista',price:39},
   {name:'Combo de Lanche com Refri',price:0},
-  {name:'Combo de Lanche com Suco',price:0}, {name:'Combo de X-salada com Suco',price:0}, {name:'Combo de X-salada com Refri',price:0},
+  {name:'Combo de Lanche com Suco',price:0},
 ];
 // Desconto por pista agora é item na tabela de Boliche
 
@@ -712,7 +695,7 @@ ${obs?`<div class="obs"><strong>Observações:</strong> ${obs}</div>`:''}
   1. O cancelamento da festa/confraternização não implicará em devolução do montante pago na reserva do evento.<br>
   2. O consumo parcial dos produtos acima contratados não acarretará em desconto a ser dado ao final do evento.<br>
   3. É proibida a entrada de qualquer alimento ou bebida sem a autorização da diretoria.<br>
-  4. Tolerância de atraso de 10 minutos.<br>
+  4. Tolerância de atraso de 20 minutos.<br>
   5. O espaço camarote é exclusivo para quem reservou o mesmo.<br>
   <br>
   <strong>Para a Reserva:</strong><br>
